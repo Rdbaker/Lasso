@@ -93,3 +93,38 @@ fn drop_partial_vec() {
         vector::drop(vec![1, 2, 3, 4], 2)
     );
 }
+
+#[test]
+fn drop_right_n_0() {
+    assert_eq!(
+        vec![1, 2, 3, 4],
+        vector::drop_right(vec![1, 2, 3, 4], 0)
+    );
+}
+
+#[test]
+fn drop_right_full_vec() {
+    let result: Vec<i32> = Vec::new();
+    assert_eq!(
+        result,
+        vector::drop_right(vec![1, 2, 3, 4], 4)
+    );
+}
+
+#[test]
+#[should_panic(expected = "subtract with overflow")]
+fn drop_right_more_than_full_vec() {
+    let result: Vec<i32> = Vec::new();
+    assert_eq!(
+        result,
+        vector::drop_right(vec![1, 2, 3, 4], 5)
+    );
+}
+
+#[test]
+fn drop_right_partial_vec() {
+    assert_eq!(
+        vec![1, 2],
+        vector::drop_right(vec![1, 2, 3, 4], 2)
+    );
+}

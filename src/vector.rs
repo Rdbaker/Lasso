@@ -76,3 +76,21 @@ pub fn drop<T: Clone>(vec: Vec<T>, n: usize) -> Vec<T> {
     let (_, vec_after_drop) = vec.split_at(n);
     vec_after_drop.to_vec()
 }
+
+/// Creates a slice of the vector with n elements dropped from the end.
+///
+/// # Examples
+///
+/// ```
+/// use lasso::vector;
+///
+/// assert_eq!(
+///     vector::drop_right(vec![1, 2, 3], 2),
+///     vec![1]
+/// )
+/// ```
+pub fn drop_right<T: Clone>(vec: Vec<T>, n: usize) -> Vec<T> {
+    let num = vec.len() - n;
+    let (vec_after_drop, _) = vec.split_at(num);
+    vec_after_drop.to_vec()
+}
