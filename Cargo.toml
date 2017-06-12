@@ -1,0 +1,6 @@
+[package]
+name = "lasso"
+version = "0.1.0"
+authors = ["Ryan Baker <ryan.da.baker@gmail.com>"]
+
+[dependencies]
