@@ -27,3 +27,34 @@ fn chunk_n_size_1() {
     let v: Vec<Vec<i32>> = vector::chunk(vec![1,2,3,4,5,6], 1);
     assert_eq!(v, vec![vec![1], vec![2], vec![3], vec![4], vec![5], vec![6]]);
 }
+
+#[test]
+fn chunk_empty_vector() {
+    assert_eq!(vec![vec![1]], vector::chunk(vec![1], 3));
+}
+
+#[test]
+fn difference_full_first_vector() {
+    assert_eq!(vec![1,2,3,4], vector::difference(vec![1,2,3,4], vec![]));
+}
+
+#[test]
+fn difference_full_second_vector() {
+    assert_eq!(vec![1,2,3,4], vector::difference(vec![], vec![1,2,3,4]));
+}
+
+#[test]
+fn difference_no_overlap() {
+    assert_eq!(vec![1,3,2,4], vector::difference(vec![1, 3], vec![2,4]));
+}
+
+#[test]
+fn difference_partial_overlap() {
+    assert_eq!(vec![1,4], vector::difference(vec![1, 2, 3], vec![2, 3, 4]));
+}
+
+#[test]
+fn difference_no_diff() {
+    let result: Vec<i32> = Vec::new();
+    assert_eq!(result, vector::difference(vec![1, 2, 3, 4], vec![1, 2, 3, 4]));
+}
