@@ -58,3 +58,21 @@ pub fn difference<T: Clone + PartialEq>(first_vec: Vec<T>, second_vec: Vec<T>) -
     elts_unique_in_first.append(&mut elts_unique_in_second);
     elts_unique_in_first
 }
+
+
+/// Creates a slice of the vector with n elements dropped from the beginning.
+///
+/// # Examples
+///
+/// ```
+/// use lasso::vector;
+///
+/// assert_eq!(
+///     vector::drop(vec![1, 2, 3], 2),
+///     vec![3]
+/// )
+/// ```
+pub fn drop<T: Clone>(vec: Vec<T>, n: usize) -> Vec<T> {
+    let (_, vec_after_drop) = vec.split_at(n);
+    vec_after_drop.to_vec()
+}
